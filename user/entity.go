@@ -1,7 +1,14 @@
 package user
 
+import "time"
+
 type User struct {
-	id       int
-	name     string
-	password string
+	ID           int
+	Name         string
+	Email        string
+	Password     string
+	SecretKey    string
+	LinkResource string
+	CreatedAt    time.Time
+	UpdatedAt    time.Time
 }

@@ -1,0 +1,12 @@
+CREATE TABLE monitors(
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  capacity TINYINT NOT NULL,
+  battery TINYINT,
+  connection BOOLEAN DEFAULT FALSE,
+  device_id BIGINT NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY(id),
+  CONSTRAINT FK_monitors_device_id
+  FOREIGN KEY (device_id) REFERENCES devices(id)
+);

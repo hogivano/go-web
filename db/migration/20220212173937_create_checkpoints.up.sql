@@ -1,0 +1,10 @@
+CREATE TABLE checkpoints (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  device_id BIGINT NOT NULL,
+  on_point BOOLEAN DEFAULT TRUE,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY(id),
+  CONSTRAINT FK_checkpoints_device_id
+  FOREIGN KEY (device_id) REFERENCES devices(id)
+);

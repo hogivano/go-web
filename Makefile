@@ -10,4 +10,7 @@ migratedrop:
 migrateadd:
 	migrate create -ext sql -dir db/migration
 
-.PHONY: migrateup migratedown migratedrop migrateadd
+testcase:
+	go test go-web/test
+
+.PHONY: migrateup migratedown migratedrop migrateadd testcase

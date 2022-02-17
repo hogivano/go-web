@@ -4,7 +4,7 @@ CREATE TABLE devices (
   name VARCHAR(255),
   user_Id BIGINT,
   created_by BIGINT,
-  created_at TIMESTAMP NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(id),
   UNIQUE (code),
