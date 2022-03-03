@@ -30,16 +30,19 @@ func (h *userHandler) LoginUser(ctx *gin.Context) {
 func (h *userHandler) RegisterUser(ctx *gin.Context) {
 	var input user.RegisterUserInput
 
-	err := ctx.ShouldBindJSON(input)
+	err := ctx.ShouldBindJSON(&input)
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, helper.APIResponse(err.Error(), http.StatusBadRequest, input))
+		return
 	}
 
 	user, err := h.service.RegisterUser(input)
 
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, helper.APIResponse(err.Error(), http.StatusBadRequest, input))
+		return
 	}
 
 	ctx.JSON(http.StatusOK, helper.APIResponse("Success register account", http.StatusOK, user))
+	return
 }

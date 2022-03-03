@@ -25,7 +25,7 @@ func init() {
 }
 
 func main() {
-	dsn := "root:qwertyuiop@tcp(127.0.0.1:3306)/goweb?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := os.Getenv("DB_USER") + ":" + os.Getenv("DB_PASSWORD") + "@tcp(" + os.Getenv("DB_HOST") + ":" + os.Getenv("DB_PORT") + ")/" + os.Getenv("DB_NAME") + "?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
@@ -40,8 +40,8 @@ func main() {
 
 	api := router.Group(os.Getenv("API_VERSION"))
 
-	api.POST("/users", userHandler.RegisterUser)
-	api.GET("/users", func(c *gin.Context) {
+	api.POST("/user", userHandler.RegisterUser)
+	api.GET("/user", func(c *gin.Context) {
 		c.JSON(http.StatusOK, helper.RandomString(20))
 	})
 

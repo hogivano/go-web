@@ -1,11 +1,13 @@
+include .env
+
 migrateup:
-	migrate -path db/migration -database "mysql://root:qwertyuiop@tcp(localhost:3306)/goweb" -verbose up
+	migrate -path db/migration -database "mysql://$(DB_USER):$(DB_PASSWORD)@tcp($(DB_HOST):$(DB_PORT))/$(DB_NAME)" -verbose up
 
 migratedown:
-	migrate -path db/migration -database "mysql://root:qwertyuiop@tcp(localhost:3306)/goweb" -verbose down
+	migrate -path db/migration -database "mysql://$(DB_USER):$(DB_PASSWORD)@tcp($(DB_HOST):$(DB_PORT))/$(DB_NAME)" -verbose down
 
 migratedrop:
-	migrate -path db/migration -database "mysql://root:qwertyuiop@tcp(localhost:3306)/goweb" -verbose drop
+	migrate -path db/migration -database "mysql://$(DB_USER):$(DB_PASSWORD)@tcp($(DB_HOST):$(DB_PORT))/$(DB_NAME)" -verbose drop
 
 migrateadd:
 	migrate create -ext sql -dir db/migration
