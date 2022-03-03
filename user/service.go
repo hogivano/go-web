@@ -36,7 +36,7 @@ func (s *service) LoginUser(input LoginUserInput) (User, error) {
 		return user, err
 	}
 
-	return newUser, nil
+	return newUser, err
 }
 
 func (s *service) RegisterUser(input RegisterUserInput) (User, error) {
