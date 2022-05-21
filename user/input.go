@@ -6,8 +6,8 @@ type LoginUserInput struct {
 }
 
 type RegisterUserInput struct {
-	Name      string `json:"name"`
-	Email     string `json:"email"`
-	Password  string `json:"password"`
-	SecretKey string `json:"secretKey"`
+	Name     string `json:"name"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
+	Sec      string `json:"secretKey"`
 }
